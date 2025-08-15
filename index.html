@@ -70,6 +70,7 @@
         }
     </style>
 <body>
+
     <div>
         <div class="title">کد دروس کارشناسی علوم کامپیوتر دانشگاه آزاد شیراز</div>
         <div class="detail">برای کپی کردن کد ها کافیه روی کد کلیک کنید</div>
@@ -80,7 +81,11 @@
             <a href="https://t.me/devhssin">تهیه شده توسط حسین زارعی</a> |
             <a href="https://t.me/ComputerScienceEX">کانال علوم کامپیوتر</a> |
             <a href="https://t.me/IAUCourseExp">کانال تجربیات انتخاب واحد</a>
-        </div><hr>
+        </div>
+        <hr>
+        <div style="margin: 20px 0; text-align: center;">
+            <input id="searchBox" type="text" class="form-control" style="max-width: 350px; display: inline-block;" placeholder="جستجو بر اساس نام یا کد درس...">
+        </div>
     </div>
 
     <div class="course-category">درس های اصلی (59 واحد)</div>
@@ -187,7 +192,6 @@
 
     <div class="course-category">دو درس از میان دروس تخصصیِ زیر اجباري است</div>
 
-
     <div class="course-item">کامپایلر
         <button class="copy-button" onclick="copyToClipboard('6117160854' , this)">
             <span class="course-code">6117160854</span>
@@ -217,7 +221,6 @@
             <span class="course-code">6117153664</span>
         </button>
     </div>
-
 
     <div class="course-item">انالیز عددی
         <button class="copy-button" onclick="copyToClipboard('6117160436' , this)">
@@ -259,7 +262,6 @@
         </button>
     </div>
 
-
     <div class="course-item">زبان انگلیسی و ترکیبی 1
         <button class="copy-button" onclick="copyToClipboard('99090' , this)">
             <span class="course-code">99090</span>
@@ -277,7 +279,6 @@
             <span class="course-code">92381</span>
         </button>
     </div>
-
 
     <div class="course-item">اندیشه ها و وصایای امام خمینی
         <button class="copy-button" onclick="copyToClipboard('99073' , this)">
@@ -383,13 +384,11 @@
         </button>
     </div>
 
-
     <div class="course-item">پروژه
         <button class="copy-button" onclick="copyToClipboard('6117114704' , this)">
             <span class="course-code">6117114704</span>
         </button>
     </div>
-
 
     <div class="course-item">شبیه سازی کامپیوتری
         <button class="copy-button" onclick="copyToClipboard('6117174959' , this)">
@@ -397,13 +396,11 @@
         </button>
     </div>
 
-
     <div class="course-item">داده کاوی
         <button class="copy-button" onclick="copyToClipboard('6117138058' , this)">
             <span class="course-code">6117138058</span>
         </button>
     </div>
-
 
     <div class="course-item">کار آموزی
         <button class="copy-button" onclick="copyToClipboard('6117156371' , this)">
@@ -411,20 +408,17 @@
         </button>
     </div>
 
-
     <div class="course-item">کاربرد کامپیوتر در سیستمهای تجاری
         <button class="copy-button" onclick="copyToClipboard('6117199646' , this)">
             <span class="course-code">6117199646</span>
         </button>
     </div>
 
-
     <div class="course-item">بهینه سازی ترکیبیاتی
         <button class="copy-button" onclick="copyToClipboard('6117205775' , this)">
             <span class="course-code">6117205775</span>
         </button>
     </div>
-
 
     <div class="course-item">مبانی انالیز ریاضی
         <button class="copy-button" onclick="copyToClipboard('6114144407' , this)">
@@ -505,7 +499,6 @@
     </div>
 
     <div class="course-category">درس های پایه (21 واحد)</div>
-
 
     <div class="course-item">ریاضی عمومی 1
         <button class="copy-button" onclick="copyToClipboard('6117165140' , this)">
@@ -607,5 +600,22 @@
             alert('کد کپی شد : ' + code)
         })
     }
+
+    // --- Search/filter functionality ---
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+            const items = document.querySelectorAll('.course-item');
+            items.forEach(function (item) {
+                const text = item.textContent.replace(/\s+/g, ' ').toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
 </script>
 </html>
